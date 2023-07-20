@@ -1,17 +1,24 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Mes Contacts
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    <ion-item *ngFor="let contact of contacts">
+      <ion-icon *ngIf="!contact.favorite" slot="start" name="heart-outline"></ion-icon>
+      <ion-icon *ngIf="contact.favorite" slot="start" color="danger" name="heart"></ion-icon>
+      {{ contact.lastname }} {{ contact.firstname }}
+      <ion-button
+        size="small"
+        color="primary"
+        slot="end">
+        <ion-icon name="chevron-down"></ion-icon>
+      </ion-button>
+    </ion-item>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  </ion-list>
 </ion-content>

@@ -34,4 +34,14 @@ export class Tab1Page {
     this.contacts = await this.dbProvider.getContact()
   }
 
+  async addToFavorite(contact: Contact, value: boolean) {
+    await this.dbProvider.addToFavorite(contact.id, value)
+    contact.favorite = value
+  }
+
+  async delete(contact: Contact) {
+    await this.dbProvider.deleteContact(contact.id)
+    this.contacts = this.contacts.filter(c => c !== contact)
+  }
+
 }

@@ -9,14 +9,16 @@
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item *ngFor="let contact of contacts">
-      <ion-icon *ngIf="!contact.favorite" slot="start" name="heart-outline"></ion-icon>
-      <ion-icon *ngIf="contact.favorite" slot="start" color="danger" name="heart"></ion-icon>
+      <ion-icon (click)="addToFavorite(contact, true)" *ngIf="!contact.favorite" slot="start" name="heart-outline"></ion-icon>
+      <ion-icon (click)="addToFavorite(contact, false)" *ngIf="contact.favorite" slot="start" color="danger" name="heart"></ion-icon>
       {{ contact.lastname }} {{ contact.firstname }}
       <ion-button
         size="small"
-        color="primary"
-        slot="end">
-        <ion-icon name="chevron-down"></ion-icon>
+        color="black"
+        slot="end"
+        (click)="delete(contact)"
+        >
+        <ion-icon name="trash" color="danger"></ion-icon>
       </ion-button>
     </ion-item>
 

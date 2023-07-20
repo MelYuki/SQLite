@@ -12,6 +12,7 @@ import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
   imports: [IonicModule, CommonModule],
   providers: [SQLite, DbProvider]
 })
+
 export class AppComponent {
   public environmentInjector = inject(EnvironmentInjector);
 

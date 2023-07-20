@@ -41,4 +41,17 @@ export class DbProvider {
         }
         return contacts.sort( (c1, c2) => c1.lastname.localeCompare(c2.lastname))
     }
+
+    async addToFavorite(id: number, value: boolean) {
+        await this.connect.executeSql(`
+            UPDATE Contacts SET favorite = ? WHERE id = ?
+        `, [value ? 1 : 0, id])
+    }
+
+    async deleteContact(id: number) {
+        await this.connect.executeSql(`
+            DELETE FROM Contact Where id = ?
+        `, [id])
+    }
+
 }
